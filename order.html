@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Order | Stuffed Puffs</title>
+    <link rel="icon" href="images/LOGO2.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chewy&amp;family=League+Spartan:wght@400;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/script.js" defer></script>
+  </head>
+
+  <body>
+    <div class="site" id="order">
+      <header class="header">
+        <a class="logo-slot" href="index.html" aria-label="Stuffed Puffs home">
+          <img src="images/LOGO.png" alt="Stuffed Puffs" />
+        </a>
+
+        <nav aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="products.html">Products</a>
+          <a href="order.html" aria-current="page">Order</a>
+          <a href="reviews.html">Reviews</a>
+          <a href="faqs.html">FAQs</a>
+        </nav>
+        <button
+          class="cart-trigger"
+          id="open-cart"
+          type="button"
+          aria-label="Open cart, 0 items"
+        >
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M4 7h6l6 25h22l5-18H12M18 40h.1M36 40h.1" />
+          </svg>
+          <span id="cart-count">0</span>
+        </button>
+      </header>
+
+      <main>
+        <section class="featured" aria-labelledby="featured-title">
+          <h1 id="featured-title">Featured</h1>
+          <div class="product-grid" id="featured-products"></div>
+        </section>
+
+        <section class="menu" id="menu" aria-labelledby="menu-title">
+          <h2 id="menu-title">Menu</h2>
+          <div class="product-grid" id="menu-products"></div>
+        </section>
+      </main>
+
+      <footer>
+        <a class="logo-slot" href="index.html" aria-label="Stuffed Puffs home">
+          <img src="images/LOGO.png" alt="Stuffed Puffs" />
+        </a>
+
+        <div class="footer-icons" aria-label="Social media and location">
+          <a
+            href="https://www.facebook.com/profile.php?id=61576597923688"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+          >
+            <span class="facebook" aria-hidden="true">f</span>
+          </a>
+
+          <a
+            href="https://www.instagram.com/thestuffed.puff?utm_source=ig_web_button_share_sheet&psln=ZDNlZDc0MzIxNw=="
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle
+                cx="17.5"
+                cy="6.5"
+                r="1"
+                fill="currentColor"
+                stroke="none"
+              />
+            </svg>
+          </a>
+
+          <a
+            href="https://www.tiktok.com/@the.stuffed.puff?is_from_webapp=1&sender_device=pc"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TikTok"
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M13 5v10a3 3 0 1 1-3-3M13 5c1 4 3 5 5 5" />
+            </svg>
+          </a>
+
+          <a
+            href="https://share.google/cGZSCGD0PjxGjFOpw"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View our location on Google Maps"
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20 9c0 6-8 13-8 13S4 15 4 9a8 8 0 1 1 16 0Z" />
+              <circle cx="12" cy="9" r="3" />
+            </svg>
+          </a>
+        </div>
+      </footer>
+    </div>
+
+    <dialog id="order-dialog" aria-labelledby="dialog-title">
+      <section id="cart-view">
+        <h2 id="dialog-title">My Cart</h2>
+        <div id="cart-items"></div>
+
+        <div class="dialog-actions">
+          <button id="checkout" type="button">Checkout</button>
+          <button class="brown" id="close-cart" type="button">Back</button>
+        </div>
+      </section>
+
+      <section id="details-view" hidden>
+        <button
+          class="back-arrow"
+          id="back-to-cart"
+          type="button"
+          aria-label="Back to cart"
+        >
+          ‹
+        </button>
+
+        <h2>Customer Details</h2>
+        <p class="intro">
+          Tell us who’s picking up. We’ll take care of the puffs.
+        </p>
+
+        <form id="order-form">
+          <label for="customer-name">Customer name</label>
+          <input
+            id="customer-name"
+            name="customerName"
+            type="text"
+            placeholder="SURNAME, FIRST NAME"
+            autocomplete="name"
+            maxlength="100"
+            required
+          />
+
+          <label for="phone">Phone number</label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            placeholder="09XX XXX XXXX"
+            autocomplete="tel"
+            pattern="[+0-9\(\) \-]{7,25}"
+            maxlength="25"
+            required
+          />
+
+          <label for="payment-method">Payment method</label>
+          <select id="payment-method" name="paymentMethod" required>
+            <option value="Cash">Cash</option>
+            <option value="UnionBank">Online payment — UnionBank</option>
+            <option value="GCash">Online payment — GCash</option>
+          </select>
+
+          <label for="pickup">Pickup date &amp; time</label>
+          <input id="pickup" name="pickup" type="datetime-local" required />
+
+          <label class="visually-hidden" for="notes">
+            Special requests or pickup instructions
+          </label>
+          <textarea
+            id="notes"
+            name="notes"
+            placeholder="Special requests or pickup instructions..."
+            maxlength="1000"
+          ></textarea>
+
+          <button class="place-order" type="submit">Place Order</button>
+          <p id="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <!-- Shown by JavaScript after the order is saved successfully -->
+        <section id="order-receipt" hidden aria-labelledby="receipt-title">
+          <h3 id="receipt-title">Stuffed Puffs — Order Receipt</h3>
+
+          <pre id="receipt-content"></pre>
+
+          <button id="print-receipt" type="button">Save your receipt</button>
+
+          <p>
+            Please keep your order reference for pickup. This receipt confirms
+            your order, not your payment.
+          </p>
+        </section>
+      </section>
+    </dialog>
+
+    <p class="toast" id="toast" role="status" aria-live="polite"></p>
+  </body>
+</html>

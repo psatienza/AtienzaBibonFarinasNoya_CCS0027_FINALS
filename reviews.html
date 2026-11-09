@@ -1,0 +1,909 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Reviews | Stuffed Puffs</title>
+    <link rel="icon" href="images/LOGO2S.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chewy&family=League+Spartan:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/script.js" defer></script>
+
+    <style>
+      .reviews-page {
+        padding: 10px 12px 18px;
+      }
+
+      .reviews-page .site {
+        width: 100%;
+        max-width: 960px;
+        margin: auto;
+        background: var(--cream);
+      }
+
+      .reviews-page .header {
+        min-height: 75px;
+        padding: 12px 55px;
+        display: flex;
+        align-items: center;
+        gap: 90px;
+        background: var(--orange);
+      }
+
+      .reviews-page .logo-slot {
+        display: block;
+        width: 95px;
+        height: 50px;
+        flex-shrink: 0;
+      }
+
+      .reviews-page .logo-slot img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .reviews-page nav {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex: 1;
+      }
+
+      .reviews-page nav a {
+        display: grid;
+        place-items: center;
+        min-height: 32px;
+        flex: 1;
+        padding: 4px 14px;
+        border-radius: 30px;
+        background: var(--cream);
+        color: var(--orange);
+        text-transform: uppercase;
+        font: 700 11px var(--subheading);
+      }
+
+      .reviews-page h1,
+      .reviews-page h2 {
+        font-family: var(--heading);
+        font-weight: 400;
+        margin: 0;
+      }
+
+      .reviews-summary {
+        width: calc(100% - 128px);
+        margin: 34px auto 50px;
+        padding: 16px 35px 25px;
+        border-radius: 7px;
+        background: var(--brown);
+        color: var(--cream);
+      }
+
+      .overall-rating {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+        font: 700 35px var(--subheading);
+      }
+
+      .rating-star {
+        color: var(--orange);
+        font-size: 30px;
+      }
+
+      .rating-breakdown {
+        display: grid;
+        gap: 7px;
+      }
+
+      .rating-row {
+        display: grid;
+        grid-template-columns: 125px 55px minmax(100px, 1fr) 15px;
+        gap: 10px;
+        align-items: center;
+        font: 700 14px var(--subheading);
+      }
+
+      .rating-label {
+        font-size: 17px;
+      }
+
+      .rating-bar {
+        height: 14px;
+        overflow: hidden;
+        border-radius: 2px;
+        background: var(--cream);
+      }
+
+      .rating-bar span {
+        display: block;
+        height: 100%;
+        background: var(--orange);
+      }
+
+      .review-list {
+        padding: 0 30px;
+      }
+
+      .review-card {
+        position: relative;
+        min-height: 92px;
+        padding: 8px 13px 11px;
+        border-top: 2px solid var(--brown);
+      }
+
+      .review-card:last-child {
+        border-bottom: 2px solid var(--brown);
+      }
+
+      .review-empty {
+        min-height: 92px;
+      }
+
+      .review-heading {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: start;
+        gap: 20px;
+        width: 100%;
+      }
+
+      .review-heading h1 {
+        color: var(--orange);
+        font-size: 28px;
+        line-height: 1;
+        text-align: left;
+      }
+
+      .review-heading time {
+        grid-column: 2;
+        grid-row: 1;
+        margin-top: 4px;
+        white-space: nowrap;
+        font: 700 14px var(--subheading);
+        text-align: right;
+      }
+
+      .review-rating {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        margin: 5px 0 4px;
+        font: 700 12px var(--subheading);
+      }
+
+      .review-card p {
+        margin: 0;
+        font-size: 12px;
+      }
+
+      .delete-review {
+        position: absolute;
+        top: 8px;
+        right: 13px;
+        padding: 5px 9px;
+        border-radius: 8px;
+        background: var(--brown);
+        color: var(--cream);
+        font: 700 10px var(--subheading);
+      }
+
+      .admin-mode .review-heading {
+        padding-right: 90px;
+      }
+
+      .admin-mode .review-heading time {
+        margin-top: 38px;
+      }
+
+      .admin-section {
+        padding: 28px 30px;
+        text-align: center;
+      }
+
+      .admin-button {
+        padding: 9px 18px;
+        border-radius: 16px;
+        background: var(--brown);
+        color: var(--cream);
+        font: 700 12px var(--subheading);
+      }
+
+      .admin-panel {
+        max-width: 500px;
+        margin: 20px auto 0;
+        padding: 22px;
+        border-radius: 12px;
+        background: var(--brown);
+        color: var(--cream);
+        text-align: left;
+      }
+
+      .admin-panel h2 {
+        margin-bottom: 18px;
+        color: var(--cream);
+        font-size: 28px;
+        text-align: center;
+      }
+
+      .admin-panel label {
+        display: block;
+        margin-bottom: 4px;
+        font: 700 13px var(--subheading);
+      }
+
+      .admin-panel input,
+      .admin-panel select,
+      .admin-panel textarea {
+        width: 100%;
+        min-height: 35px;
+        margin-bottom: 12px;
+        padding: 7px 9px;
+        border: 1px solid #bbb;
+        border-radius: 3px;
+        background: white;
+        font-size: 14px;
+      }
+
+      .admin-panel textarea {
+        min-height: 90px;
+        resize: vertical;
+      }
+
+      .admin-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px;
+      }
+
+      .admin-actions button {
+        flex: 1;
+        padding: 9px;
+        border-radius: 8px;
+        background: var(--orange);
+        color: var(--cream);
+        font: 700 12px var(--subheading);
+      }
+
+      .admin-actions button:nth-child(2) {
+        background: var(--cream);
+        color: var(--brown);
+      }
+
+      .admin-actions button:nth-child(3) {
+        background: #8b251d;
+      }
+
+      .reviews-page footer {
+        min-height: 66px;
+        padding: 8px 47px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--orange);
+      }
+
+      .footer-icons {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--cream);
+      }
+
+      .footer-icons svg {
+        width: 28px;
+        height: 30px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+      }
+
+      .facebook {
+        display: grid;
+        width: 28px;
+        height: 28px;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--cream);
+        color: var(--orange);
+        font: bold 24px Arial;
+      }
+
+      .menu-toggle {
+        display: none;
+      }
+
+      .navigation-drawer {
+        position: fixed;
+        inset: 0 0 0 auto;
+        width: min(320px, 85vw);
+        height: 100dvh;
+        max-width: 85vw;
+        max-height: 100dvh;
+        margin: 0;
+        padding: 64px 24px 28px;
+        border: 0;
+        background: var(--orange);
+        color: var(--cream);
+        overflow-y: auto;
+        z-index: 20;
+      }
+
+      .navigation-drawer::backdrop {
+        background: rgb(60 28 6 / 55%);
+      }
+
+      .navigation-drawer .logo-slot {
+        width: 120px;
+        height: 66px;
+        margin-bottom: 28px;
+      }
+
+      .navigation-drawer nav {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+      }
+
+      .navigation-drawer nav a {
+        flex: none;
+        min-height: 46px;
+        font-size: 16px;
+      }
+
+      .menu-close {
+        position: absolute;
+        top: 12px;
+        right: 16px;
+        width: 44px;
+        height: 44px;
+        font-size: 36px;
+        background: transparent;
+        color: var(--cream);
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+
+      @media (max-width: 640px) {
+        .reviews-page {
+          padding: 8px;
+        }
+
+        .reviews-page .header {
+          min-height: 72px;
+          padding: 12px 20px;
+          gap: 4px;
+          justify-content: space-between;
+        }
+
+        .reviews-page .header .logo-slot {
+          width: 60px;
+          height: 34px;
+        }
+
+        .reviews-page .header > nav {
+          display: none !important;
+        }
+
+        .reviews-page .menu-toggle {
+          display: flex !important;
+          flex-direction: column;
+          justify-content: center;
+          gap: 6px;
+          width: 46px;
+          height: 46px;
+          padding: 10px;
+          background: transparent;
+          color: var(--cream);
+        }
+
+        .reviews-page .menu-toggle span {
+          width: 26px;
+          height: 3px;
+          border-radius: 3px;
+          background: currentColor;
+        }
+
+        .reviews-summary {
+          width: calc(100% - 40px);
+          margin: 24px auto 35px;
+          padding: 14px 18px 20px;
+        }
+
+        .overall-rating {
+          font-size: 27px;
+        }
+
+        .rating-row {
+          grid-template-columns: 95px 42px minmax(60px, 1fr) 12px;
+          gap: 6px;
+          font-size: 10px;
+        }
+
+        .rating-label {
+          font-size: 12px;
+        }
+
+        .rating-bar {
+          height: 11px;
+        }
+
+        .review-list {
+          padding: 0 20px;
+        }
+
+        .review-heading h1 {
+          font-size: 23px;
+        }
+
+        .review-heading time {
+          font-size: 11px;
+        }
+
+        .review-card p {
+          font-size: 10px;
+        }
+
+        .admin-section {
+          padding-inline: 20px;
+        }
+
+        .admin-actions {
+          flex-direction: column;
+        }
+
+        .reviews-page footer {
+          padding: 12px 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="reviews-page">
+    <div class="site">
+      <header class="header">
+        <a class="logo-slot" href="index.html">
+          <img src="images/LOGO.png" alt="Stuffed Puffs" />
+        </a>
+
+        <nav aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="products.html">Products</a>
+          <a href="order.html">Order</a>
+          <a href="reviews.html" aria-current="page">Reviews</a>
+          <a href="faqs.html">FAQs</a>
+        </nav>
+        <button
+          class="cart-trigger"
+          id="open-cart"
+          type="button"
+          aria-label="Open cart, 0 items"
+        >
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M4 7h6l6 25h22l5-18H12M18 40h.1M36 40h.1" />
+          </svg>
+          <span id="cart-count">0</span>
+        </button>
+      </header>
+
+      <main>
+        <section class="reviews-summary">
+          <div class="overall-rating">
+            <span class="rating-star">★</span>
+            <strong id="overall-score">0/5</strong>
+          </div>
+
+          <div class="rating-breakdown">
+            <div class="rating-row">
+              <span class="rating-label">😍 Excellent</span>
+              <strong>(5/5)</strong>
+              <span class="rating-bar">
+                <span id="bar-5"></span>
+              </span>
+              <strong id="count-5">0</strong>
+            </div>
+
+            <div class="rating-row">
+              <span class="rating-label">😀 Good</span>
+              <strong>(4/5)</strong>
+              <span class="rating-bar">
+                <span id="bar-4"></span>
+              </span>
+              <strong id="count-4">0</strong>
+            </div>
+
+            <div class="rating-row">
+              <span class="rating-label">🙂 Average</span>
+              <strong>(3/5)</strong>
+              <span class="rating-bar">
+                <span id="bar-3"></span>
+              </span>
+              <strong id="count-3">0</strong>
+            </div>
+
+            <div class="rating-row">
+              <span class="rating-label">😕 Poor</span>
+              <strong>(2/5)</strong>
+              <span class="rating-bar">
+                <span id="bar-2"></span>
+              </span>
+              <strong id="count-2">0</strong>
+            </div>
+
+            <div class="rating-row">
+              <span class="rating-label">😣 Bad</span>
+              <strong>(1/5)</strong>
+              <span class="rating-bar">
+                <span id="bar-1"></span>
+              </span>
+              <strong id="count-1">0</strong>
+            </div>
+          </div>
+        </section>
+
+        <section id="review-list" class="review-list"></section>
+
+        <section class="admin-section">
+          <button id="admin-login" class="admin-button" type="button">
+            Admin Edit
+          </button>
+
+          <div id="admin-panel" class="admin-panel" hidden>
+            <h2>Manage Reviews</h2>
+
+            <form id="review-form">
+              <label for="review-slot">Review Slot</label>
+
+              <select id="review-slot" required>
+                <option value="new">Add New Review</option>
+              </select>
+
+              <label for="review-name">Customer Name</label>
+              <input id="review-name" type="text" required />
+
+              <label for="review-date">Date</label>
+              <input id="review-date" type="text" required />
+
+              <label for="review-rating">Rating</label>
+
+              <select id="review-rating" required>
+                <option value="5">5/5 - Excellent</option>
+                <option value="4">4/5 - Good</option>
+                <option value="3">3/5 - Average</option>
+                <option value="2">2/5 - Poor</option>
+                <option value="1">1/5 - Bad</option>
+              </select>
+
+              <label for="review-comment">Review</label>
+              <textarea id="review-comment" required></textarea>
+
+              <div class="admin-actions">
+                <button type="submit">Save Review</button>
+                <button id="clear-form" type="button">Clear</button>
+                <button id="admin-logout" type="button">Log Out</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <a class="logo-slot" href="index.html" aria-label="Stuffed Puffs home">
+          <img src="images/LOGO.png" alt="Stuffed Puffs" />
+        </a>
+
+        <div class="footer-icons" aria-label="Social media and location">
+          <a
+            href="https://www.facebook.com/profile.php?id=61576597923688"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+          >
+            <span class="facebook">f</span>
+          </a>
+
+          <a
+            href="https://www.instagram.com/thestuffed.puff"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+              <circle cx="12" cy="12" r="4"></circle>
+              <circle
+                cx="17.5"
+                cy="6.5"
+                r="1"
+                fill="currentColor"
+                stroke="none"
+              ></circle>
+            </svg>
+          </a>
+
+          <a
+            href="https://www.tiktok.com/@the.stuffed.puff"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TikTok"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M13 5v10a3 3 0 1 1-3-3M13 5c1 4 3 5 5 5"></path>
+            </svg>
+          </a>
+
+          <a
+            href="https://share.google/cGZSCGD0PjxGjFOpw"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Google Maps"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 9c0 6-8 13-8 13S4 15 4 9a8 8 0 1 1 16 0Z"></path>
+              <circle cx="12" cy="9" r="3"></circle>
+            </svg>
+          </a>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const ADMIN_PASSWORD = "STUFFEDPUFF11062026";
+      const STORAGE_KEY = "stuffedPuffReviews";
+      const MINIMUM_SLOTS = 6;
+
+      const defaultReviews = [
+        {
+          name: "Jaja Atienza",
+          date: "October 2, 2026",
+          rating: 5,
+          comment:
+            "Great pastries and reasonably priced! Our go to comfort food",
+        },
+        {
+          name: "Ryan Gamboa",
+          date: "May 31, 2025",
+          rating: 5,
+          comment: "super sarap ng vanilla flavor ng cream puff nila 🍰🧁😊",
+        },
+      ];
+
+      let reviews =
+        JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultReviews;
+
+      const reviewList = document.querySelector("#review-list");
+      const adminPanel = document.querySelector("#admin-panel");
+      const reviewForm = document.querySelector("#review-form");
+      const slotInput = document.querySelector("#review-slot");
+      const nameInput = document.querySelector("#review-name");
+      const dateInput = document.querySelector("#review-date");
+      const ratingInput = document.querySelector("#review-rating");
+      const commentInput = document.querySelector("#review-comment");
+
+      function saveReviews() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+      }
+
+      function getEmoji(rating) {
+        return {
+          5: "😍",
+          4: "😀",
+          3: "🙂",
+          2: "😕",
+          1: "😣",
+        }[rating];
+      }
+
+      function getLabel(rating) {
+        return {
+          5: "Excellent",
+          4: "Good",
+          3: "Average",
+          2: "Poor",
+          1: "Bad",
+        }[rating];
+      }
+
+      function updateSlotOptions() {
+        slotInput.innerHTML = '<option value="new">Add New Review</option>';
+
+        reviews.forEach((review, index) => {
+          const option = document.createElement("option");
+          option.value = index;
+          option.textContent = `Edit ${review.name}`;
+          slotInput.appendChild(option);
+        });
+      }
+
+      function updateAdminMode() {
+        const loggedIn = !adminPanel.hidden;
+
+        document.body.classList.toggle("admin-mode", loggedIn);
+
+        document.querySelectorAll(".delete-review").forEach((button) => {
+          button.hidden = !loggedIn;
+        });
+      }
+
+      function renderReviews() {
+        reviewList.innerHTML = "";
+
+        const counts = {
+          1: 0,
+          2: 0,
+          3: 0,
+          4: 0,
+          5: 0,
+        };
+
+        reviews.forEach((review) => {
+          counts[review.rating]++;
+        });
+
+        const totalReviews = reviews.length;
+
+        const average =
+          totalReviews === 0
+            ? 0
+            : reviews.reduce((sum, review) => sum + review.rating, 0) /
+              totalReviews;
+
+        document.querySelector("#overall-score").textContent =
+          totalReviews === 0 ? "0/5" : `${average.toFixed(1)}/5`;
+
+        for (let rating = 1; rating <= 5; rating++) {
+          document.querySelector(`#count-${rating}`).textContent =
+            counts[rating];
+
+          document.querySelector(`#bar-${rating}`).style.width =
+            totalReviews === 0
+              ? "0%"
+              : `${(counts[rating] / totalReviews) * 100}%`;
+        }
+
+        const totalSlots = Math.max(MINIMUM_SLOTS, reviews.length);
+
+        for (let slot = 0; slot < totalSlots; slot++) {
+          const review = reviews[slot];
+          const article = document.createElement("article");
+
+          article.className = "review-card";
+
+          if (!review) {
+            article.classList.add("review-empty");
+            reviewList.appendChild(article);
+            continue;
+          }
+
+          article.innerHTML = `
+            <div class="review-heading">
+              <h1>${review.name}</h1>
+              <time>${review.date}</time>
+            </div>
+
+            <div class="review-rating">
+              <span>${getEmoji(review.rating)}</span>
+              <strong>${getLabel(review.rating)}</strong>
+              <strong>(${review.rating}/5)</strong>
+            </div>
+
+            <p>${review.comment}</p>
+
+            <button
+              class="delete-review"
+              type="button"
+              data-index="${slot}"
+              hidden
+            >
+              Delete
+            </button>
+          `;
+
+          reviewList.appendChild(article);
+        }
+
+        updateSlotOptions();
+        updateAdminMode();
+      }
+
+      function clearForm() {
+        reviewForm.reset();
+        slotInput.value = "new";
+      }
+
+      document.querySelector("#admin-login").addEventListener("click", () => {
+        const password = prompt("Enter admin password:");
+
+        if (password !== ADMIN_PASSWORD) {
+          alert("Incorrect admin password.");
+          return;
+        }
+
+        adminPanel.hidden = false;
+        document.querySelector("#admin-login").hidden = true;
+        updateAdminMode();
+      });
+
+      document.querySelector("#admin-logout").addEventListener("click", () => {
+        adminPanel.hidden = true;
+        document.querySelector("#admin-login").hidden = false;
+        clearForm();
+        updateAdminMode();
+      });
+
+      document
+        .querySelector("#clear-form")
+        .addEventListener("click", clearForm);
+
+      slotInput.addEventListener("change", () => {
+        if (slotInput.value === "new") {
+          clearForm();
+          return;
+        }
+
+        const review = reviews[Number(slotInput.value)];
+
+        if (!review) return;
+
+        nameInput.value = review.name;
+        dateInput.value = review.date;
+        ratingInput.value = review.rating;
+        commentInput.value = review.comment;
+      });
+
+      reviewForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const newReview = {
+          name: nameInput.value.trim(),
+          date: dateInput.value.trim(),
+          rating: Number(ratingInput.value),
+          comment: commentInput.value.trim(),
+        };
+
+        if (slotInput.value === "new") {
+          reviews.push(newReview);
+        } else {
+          reviews[Number(slotInput.value)] = newReview;
+        }
+
+        saveReviews();
+        renderReviews();
+        clearForm();
+
+        alert("Review saved successfully.");
+      });
+
+      reviewList.addEventListener("click", (event) => {
+        const deleteButton = event.target.closest(".delete-review");
+
+        if (!deleteButton) return;
+
+        const index = Number(deleteButton.dataset.index);
+
+        if (confirm("Delete this review?")) {
+          reviews.splice(index, 1);
+          saveReviews();
+          renderReviews();
+        }
+      });
+
+      renderReviews();
+    </script>
+  </body>
+</html>

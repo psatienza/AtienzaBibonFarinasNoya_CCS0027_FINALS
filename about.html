@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>About Us | Stuffed Puffs</title>
+    <link rel="icon" href="images/LOGO2.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chewy&family=League+Spartan:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/script.js" defer></script>
+    <p class="toast" id="toast" role="status" aria-live="polite"></p>
+
+    <style>
+      @media (max-width: 640px) {
+        .about-page .header > nav {
+          display: none !important;
+        }
+
+        .about-page .menu-toggle {
+          display: flex !important;
+          flex-direction: column;
+          justify-content: center;
+          gap: 6px;
+          width: 46px;
+          height: 46px;
+          padding: 10px;
+          background: transparent;
+          color: var(--cream);
+        }
+
+        .about-page .menu-toggle span {
+          width: 26px;
+          height: 3px;
+          border-radius: 3px;
+          background: currentColor;
+        }
+      }
+
+      .navigation-drawer {
+        position: fixed;
+        inset: 0 0 0 auto;
+        width: min(320px, 85vw);
+        height: 100dvh;
+        max-width: 85vw;
+        max-height: 100dvh;
+        margin: 0;
+        padding: 64px 24px 28px;
+        border: 0;
+        background: var(--orange);
+        color: var(--cream);
+        overflow-y: auto;
+        z-index: 20;
+      }
+
+      .navigation-drawer::backdrop {
+        background: rgb(60 28 6 / 55%);
+      }
+
+      .navigation-drawer .logo-slot {
+        width: 120px;
+        height: 66px;
+        margin-bottom: 28px;
+      }
+
+      .navigation-drawer nav {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+      }
+
+      .navigation-drawer nav a {
+        flex: none;
+        min-height: 46px;
+        font-size: 16px;
+      }
+
+      .menu-close {
+        position: absolute;
+        top: 12px;
+        right: 16px;
+        width: 44px;
+        height: 44px;
+        font-size: 36px;
+        background: transparent;
+        color: var(--cream);
+      }
+    </style>
+  </head>
+
+  <body class="about-page">
+    <div class="site" id="about">
+      <header class="header">
+        <a class="logo-slot" href="index.html" aria-label="Stuffed Puffs home">
+          <img src="images/LOGO.png" alt="Stuffed Puffs" />
+        </a>
+
+        <nav aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html" aria-current="page">About</a>
+          <a href="products.html">Products</a>
+          <a href="order.html">Order</a>
+          <a href="reviews.html">Reviews</a>
+          <a href="faqs.html">FAQs</a>
+        </nav>
+        <button
+          class="cart-trigger"
+          id="open-cart"
+          type="button"
+          aria-label="Open cart, 0 items"
+        >
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M4 7h6l6 25h22l5-18H12M18 40h.1M36 40h.1" />
+          </svg>
+          <span id="cart-count">0</span>
+        </button>
+      </header>
+
+      <main>
+        <section class="about-values" aria-labelledby="values-title">
+          <div class="about-section-heading">
+            <h1 id="values-title">Our Values</h1>
+          </div>
+
+          <div class="values-layout">
+            <div class="values-carousel">
+              <div class="about-image-frame">
+                <button
+                  class="carousel-arrow carousel-previous"
+                  type="button"
+                  aria-label="Previous image"
+                >
+                  ‹
+                </button>
+
+                <div class="about-image-slot">
+                  <img
+                    id="values-image"
+                    src="images/PUMPKIN.jpg"
+                    alt="Freshly baked cream puff"
+                  />
+                </div>
+
+                <button
+                  class="carousel-arrow carousel-next"
+                  type="button"
+                  aria-label="Next image"
+                >
+                  ›
+                </button>
+              </div>
+
+              <div class="carousel-dots">
+                <button
+                  class="carousel-dot is-active"
+                  type="button"
+                  aria-label="Show image 1"
+                ></button>
+
+                <button
+                  class="carousel-dot"
+                  type="button"
+                  aria-label="Show image 2"
+                ></button>
+
+                <button
+                  class="carousel-dot"
+                  type="button"
+                  aria-label="Show image 3"
+                ></button>
+
+                <button
+                  class="carousel-dot"
+                  type="button"
+                  aria-label="Show image 4"
+                ></button>
+              </div>
+            </div>
+
+            <div class="values-copy">
+              <p>
+                At The Stuffed Puff, we believe that a simple pastry can bring a
+                community together and carry a big dream. What started as a
+                passion project during the pandemic has grown into a proudly
+                local handcrafted cream puff brand, created with love and
+                inspired by the people and stories around us.
+              </p>
+
+              <p>
+                Rooted in our community, we bring together classic French-
+                inspired techniques with unique and nostalgic flavors to create
+                pastries that feel both familiar and exciting. Each puff is made
+                with care, featuring delicate choux pastry, crisp craquelin, and
+                smooth diplomat cream filling—crafted to share comfort,
+                creativity, and joy with every bite.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="about-process" aria-labelledby="process-title">
+          <div class="process-copy">
+            <h2 id="process-title">Our Process</h2>
+
+            <p>
+              At The Stuffed Puff Bakeshop, every cream puff is made with care,
+              patience, and a passion for creating the perfect bite.
+            </p>
+
+            <p>
+              It starts with our freshly baked choux pastry, carefully prepared
+              to achieve a light, delicate shell with the perfect balance of
+              crispness and softness. Each puff is baked until it develops its
+              signature golden finish while keeping a hollow center ready to be
+              filled.
+            </p>
+
+            <p>
+              Once cooled, every puff is generously filled with our smooth and
+              creamy filling, made to deliver a rich yet balanced flavor in
+              every bite. Each piece is carefully assembled and finished with
+              attention to detail, ensuring consistent quality and freshness.
+            </p>
+
+            <p>
+              From mixing the dough to the final filling, every step is done
+              with love and craftsmanship—because we believe a great cream puff
+              is not just a dessert but a little moment of happiness.
+            </p>
+          </div>
+
+          <div class="process-visual">
+            <div class="process-media">
+              <iframe
+                src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F869464745926872&show_text=false&width=500"
+                title="The Stuffed Puff process video"
+                scrolling="no"
+                frameborder="0"
+                allow="
+                  autoplay;
+                  clipboard-write;
+                  encrypted-media;
+                  picture-in-picture;
+                  web-share;
+                "
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <a class="logo-slot" href="index.html" aria-label="Stuffed Puffs home">
+          <img src="images/LOGO.png" alt="Stuffed Puffs" />
+        </a>
+
+        <div class="footer-icons" aria-label="Social media and location">
+          <a
+            href="https://www.facebook.com/profile.php?id=61576597923688"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+          >
+            <span class="facebook">f</span>
+          </a>
+
+          <a
+            href="https://www.instagram.com/thestuffed.puff"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+              <circle cx="12" cy="12" r="4"></circle>
+              <circle
+                cx="17.5"
+                cy="6.5"
+                r="1"
+                fill="currentColor"
+                stroke="none"
+              ></circle>
+            </svg>
+          </a>
+
+          <a
+            href="https://www.tiktok.com/@the.stuffed.puff"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TikTok"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M13 5v10a3 3 0 1 1-3-3M13 5c1 4 3 5 5 5"></path>
+            </svg>
+          </a>
+
+          <a
+            href="https://share.google/cGZSCGD0PjxGjFOpw"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Google Maps"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 9c0 6-8 13-8 13S4 15 4 9a8 8 0 1 1 16 0Z"></path>
+              <circle cx="12" cy="9" r="3"></circle>
+            </svg>
+          </a>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const slides = [
+        ["images/PUFF1.png", "Freshly baked cream puff"],
+        ["images/PUFFOWNER.png", "Picture of the Owner"],
+        ["images/PUFF2.png", "Picture of the puffs displayed"],
+        ["images/PUFF3.png", "Picture of the store"],
+      ];
+
+      const image = document.querySelector("#values-image");
+      const dots = document.querySelectorAll(".carousel-dot");
+      let current = 0;
+
+      function showSlide(index) {
+        current = (index + slides.length) % slides.length;
+
+        image.src = slides[current][0];
+        image.alt = slides[current][1];
+
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle("is-active", dotIndex === current);
+        });
+      }
+
+      document
+        .querySelector(".carousel-previous")
+        .addEventListener("click", () => {
+          showSlide(current - 1);
+        });
+
+      document.querySelector(".carousel-next").addEventListener("click", () => {
+        showSlide(current + 1);
+      });
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          showSlide(index);
+        });
+      });
+      showSlide(0);
+    </script>
+  </body>
+</html>
