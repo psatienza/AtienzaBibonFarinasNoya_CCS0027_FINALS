@@ -409,27 +409,13 @@ function loadCart() {
       ...items,
       "",
       "Thank you for your order!",
-      "Send us your proof of purchase through any of our socials.",
-      "Include your order reference so we can verify your payment.",
+      "Kindly cordinate with us about your order through our Facebook page or Messenger.",
     ].join("\n");
 
-    const receiptContent = document.querySelector("#receipt-content");
-
-    const message =
-      "Send us your proof of purchase through any of our socials.\n" +
-      "Include your order reference so we can verify your payment.";
-
-    const boldMessage = document.createElement("strong");
-    boldMessage.textContent = message;
-
-    receiptContent.replaceChildren(
-      document.createTextNode(receiptText.replace(message, "")),
-      boldMessage,
-    );
+    document.querySelector("#receipt-content").textContent = receiptText;
     document.querySelector("#order-receipt").hidden = false;
   }
 
-  // Register the print button once, outside the submit handler.
   document.querySelector("#print-receipt")?.addEventListener("click", () => {
     if (!receiptText) return;
 
@@ -580,7 +566,6 @@ function loadCart() {
         throw new Error("Could not confirm the order. Please try again.");
       }
 
-      // Fill in the receipt before clearing the cart.
       showReceipt(payload, result.orderId);
 
       cart.clear();
