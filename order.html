@@ -192,18 +192,37 @@
           <p id="form-status" role="status" aria-live="polite"></p>
         </form>
 
-        <!-- Shown by JavaScript after the order is saved successfully -->
         <section id="order-receipt" hidden aria-labelledby="receipt-title">
           <h3 id="receipt-title">Stuffed Puffs — Order Receipt</h3>
 
           <pre id="receipt-content"></pre>
 
-          <button id="print-receipt" type="button">Save your receipt</button>
-
           <p>
             Please keep your order reference for pickup. This receipt confirms
             your order, not your payment.
           </p>
+
+          <button id="print-receipt" type="button">Save your receipt</button>
+          <section>
+            <a
+              class="facebook-receipt-button"
+              href="https://www.facebook.com/messages/t/670174756179880"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M12 0C5.24 0 0 4.95 0 11.64c0 3.5 1.43 6.53 3.76 8.62.2.18.32.43.33.7l.07 2.14c.02.68.72 1.12 1.34.85l2.38-1.05c.2-.09.43-.11.64-.05 1.1.3 2.27.46 3.48.46 6.76 0 12-4.95 12-11.64S18.76 0 12 0Z"
+                />
+                <path
+                  fill="#1877f2"
+                  d="m4.8 15.2 5.1-5.4 4.2 3.1 5.1-3.1-5.1 5.4-4.2-3.1Z"
+                />
+              </svg>
+              <span>Contact Us!</span>
+            </a>
+          </section>
         </section>
       </section>
     </dialog>
