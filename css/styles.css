@@ -1976,3 +1976,40 @@ body .site > .header > .logo-slot img {
     height: 42px;
   }
 }
+
+.facebook-receipt-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  max-width: 100%;
+  margin: 16px 0;
+  padding: 16px 22px;
+  border-radius: 12px;
+  background: #1877f2;
+  color: #fff;
+  font:
+    700 16px/1.4 Arial,
+    sans-serif;
+  text-align: center;
+  box-shadow: 0 4px 12px rgb(24 119 242 / 25%);
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.facebook-receipt-button svg {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.facebook-receipt-button:hover {
+  background: #0866cc;
+  transform: translateY(-2px);
+}
+
+.facebook-receipt-button:focus-visible {
+  outline: 3px solid var(--brown);
+  outline-offset: 4px;
+}
